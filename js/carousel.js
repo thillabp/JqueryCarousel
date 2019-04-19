@@ -1,21 +1,25 @@
-$(document).ready(function () {
-    $("#slide img:eq(0)").addClass("ativo").show();
-    var texto = $(".ativo").attr("alt");
-    $("#slide").prepend("<p>" + texto + "</p>");
+$(function(){
     
-    setInterval(slide, 1000);
+    $('#carousel img:eq(0)').addClass('ativo').show();
+    let legenda = $('.ativo').attr('alt');
+    $('#carousel').prepend("<p>" + legenda + "</p>");
+    setInterval(slider,3500);
     
-    function slide() {
-        if ($(".ativo").next().size()) {
-            $(".ativo").fadeOut().removeClass("ativo").next().fadeIn().addClass("ativo");
+    function slider(){
+        if($('.ativo').next().length){
+             $('.ativo').fadeOut().removeClass('ativo').next().fadeIn().addClass('ativo');
+            
         }else{
-        $(".ativo").fadeOut().removeClass("ativo");
-        $("#slide img:eq(0)").fadeIn().addClass("ativo");
+            $('.ativo').fadeOut().removeClass('ativo');
+            $('#carousel img:eq(0)').fadeIn().addClass('ativo');
+            
         }
+        
+        let legenda = $('.ativo').attr('alt');
+        $('#carousel p').hide().html(legenda).delay(200).fadeIn();
+    }
     
-    var texto = $(".ativo").attr("alt");
-    $("#slide p").hide().html(texto).delay(500).fadeIn();
-
-}});
+    
+});
  
 
